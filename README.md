@@ -9,8 +9,8 @@ https://api.cyxym.net/app/v1?chat
 URL - `https://api.cyxym.net/bigbrother/v1?locations.get`
 Метод - `POST`
 
-Data:
-    None
+Data:\n
+ㅤㅤㅤNone
 
 Пример ответа:
 ```
