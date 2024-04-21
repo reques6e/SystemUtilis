@@ -3,6 +3,8 @@
 
 # API Docs
 
+https://api.cyxym.net/app/v1?chat
+
 ## Получение всех локаций
 URL - `https://api.cyxym.net/bigbrother/v1?locations.get`
 Метод - `POST`
@@ -429,6 +431,354 @@ def create_invoice(id: int, password: str) -> dict:
         data = {
             'id': id,
             'password': password
+        }
+    )
+
+    return response.json()
+```
+
+## Активировать обещанный платёж
+URL - `https://api.cyxym.net/app/v1?pay.temp`
+Метод - `POST`
+
+Data:
+    id = int,
+    token = str
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "auth": true,
+        "token": ".....",
+        "password_changed": true
+    }
+}
+```
+
+Пример кода:
+```python
+def create_invoice(id: int, token: str) -> dict:
+    """
+    Создание счёта на оплату
+
+    Param:
+        id: int - Лицевой счёт (ID)
+        token: str - Токен
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?pay.temp',
+        data = {
+            'id': id,
+            'token': token
+        }
+    )
+
+    return response.json()
+```
+
+## Получение информации о типе подключения и статуса устройства
+URL - `https://api.cyxym.net/app/v1?account.link`
+Метод - `POST`
+
+Data:
+    id = int,
+    token = str
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "data": {
+            "ont_rx_power": "-26.02",
+            "olt_rx_power": "-27.22",
+            "ont_last_seen": {
+                "last_uptime": "2024-04-20 06:59:19",
+                "last_downtime": "2024-04-20 04:59:16",
+                "last_dying_gasp_time": "2024-04-20 04:59:16"
+            },
+            "ont_status": "online",
+            "ont_state": "13",
+            "uptime": "1 день, 8 часов, 26 минут, 19 секунд",
+            "ont_model": "Huawei HG8310M (однопортовая bridge)",
+            "type": "gpon"
+        }
+    }
+}
+```
+
+Пример кода:
+```python
+def get_connect_info(id: int, token: str) -> dict:
+    """
+    Получение информации о типе подключения и статуса устройства
+
+    Param:
+        id: int - Лицевой счёт (ID)
+        token: str - Токен
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?pay.temp',
+        data = {
+            'id': id,
+            'token': token
+        }
+    )
+
+    return response.json()
+```
+
+## Получение информации о типе подключения и статуса устройства
+URL - `https://api.cyxym.net/app/v1?account.link`
+Метод - `POST`
+
+Data:
+    id = int,
+    token = str
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "data": {
+            "ont_rx_power": "-26.02",
+            "olt_rx_power": "-27.22",
+            "ont_last_seen": {
+                "last_uptime": "2024-04-20 06:59:19",
+                "last_downtime": "2024-04-20 04:59:16",
+                "last_dying_gasp_time": "2024-04-20 04:59:16"
+            },
+            "ont_status": "online",
+            "ont_state": "13",
+            "uptime": "1 день, 8 часов, 26 минут, 19 секунд",
+            "ont_model": "Huawei HG8310M (однопортовая bridge)",
+            "type": "gpon"
+        }
+    }
+}
+```
+
+Пример кода:
+```python
+def get_connect_info(id: int, token: str) -> dict:
+    """
+    Получение информации о типе подключения и статуса устройства
+
+    Param:
+        id: int - Лицевой счёт (ID)
+        token: str - Токен
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?account.link',
+        data = {
+            'id': id,
+            'token': token
+        }
+    )
+
+    return response.json()
+```
+
+## Получение информации о профиле
+URL - `https://api.cyxym.net/app/v1?account`
+Метод - `POST`
+
+Data:
+    id = int,
+    token = str
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "data": {
+            "address": "Гудаутский р-н, г. Гудаута, ул. ?, д. ?",
+            "id": "2020202020",
+            "tariff": "Домашний 160 (1300 руб./мес.)",
+            "contract": "А-20/0000 от 13.12.2013",
+            "state": "Услуга оказывается",
+            "balance": 4832,
+            "price": 1300,
+            "alllllwerwe": "0",
+            "temp_pay_allowed": false,
+            "rec_pay": 0,
+            "last_pay": "01.01.2024",
+            "last_pay_sum": "1300",
+            "fullname": "Медведев Александр Сергеевич",
+            "private_cams_status": false,
+            "is_locked": false,
+            "new_messages": false,
+            "password_changed": true,
+            "phone": "79409999999"
+        }
+    }
+}
+```
+
+Пример кода:
+```python
+def get_profile_user(id: int, token: str) -> dict:
+    """
+    Получение информации о профиле
+
+    Param:
+        id: int - Лицевой счёт (ID)
+        token: str - Токен
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?account',
+        data = {
+            'id': id,
+            'token': token
+        }
+    )
+
+    return response.json()
+```
+
+## Вход в личный кабинет по номеру телефона и id
+URL - `https://api.cyxym.net/app/v1?auth.byPhone`
+Метод - `POST`
+
+Data:
+    phone = int,
+    id = int
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "auth": true,
+        "token": "____",
+        "password_changed": false
+    }
+}
+```
+
+Пример кода:
+```python
+def get_profile_user(id: int, token: str) -> dict:
+    """
+    Вход в личный кабинет по номеру телефона и id
+
+    Param:
+        phone: int - Номер телефона
+        id: str - Лицевой счёт (ID)
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?auth.byPhone',
+        data = {
+            'id': id,
+            'token': token
+        }
+    )
+
+    return response.json()
+```
+
+## Получения списка платежей 
+URL - `https://api.cyxym.net/app/v1?pay.list`
+Метод - `POST`
+
+Data:
+    id = int
+    token = str
+    from = str
+    to = str
+    payment = int
+    writeoff = int
+    overdraft = int
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "data": [
+            {
+                "n_line_no": "8",
+                "dt_oper": "21.04.2024 15:16",
+                "d_oper": "21.04.24",
+                "v_description": "Установка временного кредита (Вручную)",
+                "v_sum": null
+            },
+            {
+                "n_line_no": "7",
+                "dt_oper": "21.04.2024 15:16",
+                "d_oper": "21.04.24",
+                "v_description": "Закрытие временного кредита (Вручную)",
+                "v_sum": null
+            },
+            {
+                "n_line_no": "6",
+                "dt_oper": "21.04.2024 15:15",
+                "d_oper": "21.04.24",
+                "v_description": "Установка временного кредита (Вручную)",
+                "v_sum": null
+            },
+            {
+                "n_line_no": "5",
+                "dt_oper": "21.04.2024 15:15",
+                "d_oper": "21.04.24",
+                "v_description": "Закрытие временного кредита (Вручную)",
+                "v_sum": null
+            },
+            {
+                "n_line_no": "4",
+                "dt_oper": "21.04.2024 15:14",
+                "d_oper": "21.04.24",
+                "v_description": "Установка временного кредита (Вручную)",
+                "v_sum": null
+            },
+            {
+                "n_line_no": "3",
+                "dt_oper": "21.04.2024 00:00",
+                "d_oper": "21.04.24",
+                "v_description": "Абон. плата Домашний 160",
+                "v_sum": "-43,33"
+            },
+            {
+                "n_line_no": "2",
+                "dt_oper": "20.04.2024 00:00",
+                "d_oper": "20.04.24",
+                "v_description": "Абон. плата Домашний 160",
+                "v_sum": "-43,33"
+            }
+        ]
+    }
+}
+```
+
+Пример кода:
+```python
+def get_profile_user(id: int, token: str, from_: str, to: str, payment: int, writeoff: int, overdraft: int) -> dict:
+    """
+    Получения списка платежей 
+
+    Param:
+        id: str - Лицевой счёт (ID)
+        token: str - Токен
+        from: str - С какого числа вывести список платежей
+        to: str - По какое число вывести список платежей
+        payment: int - Вывести платежи
+        writeoff: int - Вывести списания
+        overdraft: int - Кредитный лимит
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?pay.list,
+        data = {
+            'id': id,
+            'token': token,
+            'from': from_,
+            'to': to,
+            'payment': payment,
+            'writeoff': writeoff,
+            'overdraft': overdraft
         }
     )
 
