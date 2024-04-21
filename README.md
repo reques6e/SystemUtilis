@@ -78,7 +78,7 @@ URL - `https://api.cyxym.net/bigbrother/v2?cams.get`
 Метод - `POST`
 
 Data:
-    lid = str
+    lid = int
 
 Пример ответа:
 ```
@@ -155,12 +155,47 @@ def get_camera(lid: int) -> dict:
     Получение камер по локации
 
     Param:
-        lid: str - ID локации
+        lid: int - ID локации
     """
     response = requests.post(
         'https://api.cyxym.net/bigbrother/v2?cams.get',
         data = {
             'lid': lid
+        }
+    )
+
+    return response.json()
+```
+
+## Получение TimeLapse
+URL - `https://api.cyxym.net/bigbrother/v1?cams.timelapse`
+Метод - `POST`
+
+Data:
+    channel = str
+
+Пример ответа:
+```
+{
+    "response": {
+        "link": "https://apsny.camera/video/psou_1_2024-04-20.mp4"
+    }
+}
+```
+
+Пример кода:
+```python
+def get_timelapse(channel: str) -> dict:
+    """
+    Получение Timelapse с камер
+
+    Param:
+        channel: str - Название камеры
+    """
+    response = requests.post(
+        'https://api.cyxym.net/bigbrother/v1?cams.timelapse',
+        data = {
+            'channel': channel
         }
     )
 
