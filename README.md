@@ -37,7 +37,7 @@ Data:
         {
             "location_id": 6,
             "location_name": "Рица"
-        },
+        }, 
         {
             "location_id": 7,
             "location_name": "Пицунда"
@@ -325,6 +325,110 @@ def get_stream_info(channel: str, ip: str) -> dict:
         data = {
             'channel': channel,
             'ip': ip
+        }
+    )
+
+    return response.json()
+```
+
+## Создание счёта на оплату
+URL - `https://api.cyxym.net/pay/v1?init`
+Метод - `POST`
+
+Data:
+    id = int,
+    amount = float
+
+Пример ответа:
+```
+{
+    "response": {
+        "id": "2db70ac0-000f-5000-a000-191a8ccff769",
+        "status": "pending",
+        "recipient": {
+            "account_id": "636554",
+            "gateway_id": "1619655"
+        },
+        "amount": {
+            "value": "500.20",
+            "currency": "RUB"
+        },
+        "description": "1",
+        "payment_method": {
+            "type": "bank_card",
+            "id": "2db70ac0-000f-5000-a000-191a8ccff769",
+            "saved": false
+        },
+        "created_at": "2024-04-21T11:22:40.680+00:00",
+        "confirmation": {
+            "enforce": false,
+            "return_url": "https://cyxym.net",
+            "confirmation_url": "https://yoomoney.ru/checkout/payments/v2/contract?orderId=2db70ac0-000f-5000-a000-191a8ccff769",
+            "type": "redirect"
+        },
+        "paid": false,
+        "refundable": false,
+        "transfers": []
+    }
+}
+```
+
+Пример кода:
+```python
+def create_invoice(id: int, amount: float) -> dict:
+    """
+    Создание счёта на оплату
+
+    Param:
+        id: int - Лицевой счёт (ID)
+        amount: float - Сумма
+    """
+    response = requests.post(
+        'https://api.cyxym.net/pay/v1?init',
+        data = {
+            'id': id,
+            'amount': amount
+        }
+    )
+
+    return response.json()
+```
+
+## Вход в личный кабинет
+URL - `https://api.cyxym.net/app/v1?auth`
+Метод - `POST`
+
+Data:
+    id = int,
+    password = str
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "auth": true,
+        "token": ".....",
+        "password_changed": true
+    }
+}
+```
+
+Пример кода:
+```python
+def create_invoice(id: int, password: str) -> dict:
+    """
+    Создание счёта на оплату
+
+    Param:
+        id: int - Лицевой счёт (ID)
+        password: str - Пароль
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?auth',
+        data = {
+            'id': id,
+            'password': password
         }
     )
 
