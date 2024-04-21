@@ -784,3 +784,42 @@ def get_profile_user(id: int, token: str, from_: str, to: str, payment: int, wri
 
     return response.json()
 ```
+
+## Отправка кода (смс) для сброса пароля
+URL - `https://api.cyxym.net/app/v1?account.sendSMS`
+Метод - `POST`
+
+Data:
+    phone = int,
+    id = int
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "phone": "79*****9999"
+    }
+}
+```
+
+Пример кода:
+```python
+def get_profile_user(id: int, token: str) -> dict:
+    """
+    Отправка кода (смс) для сброса пароля
+
+    Param:
+        phone: int - Номер телефона
+        id: str - Лицевой счёт (ID)
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?account.sendSMS',
+        data = {
+            'id': id,
+            'token': token
+        }
+    )
+
+    return response.json()
+```
