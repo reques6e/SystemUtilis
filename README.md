@@ -9,9 +9,6 @@ https://api.cyxym.net/app/v1?chat
 URL - `https://api.cyxym.net/bigbrother/v1?locations.get`
 Метод - `POST`
 
-<p>Data:</p>
-<p>ㅤㅤㅤNone</p>
-
 Пример ответа:
 ```
 {
@@ -78,9 +75,6 @@ def get_locations() -> dict:
 ## Получение камер по локации
 URL - `https://api.cyxym.net/bigbrother/v2?cams.get`
 Метод - `POST`
-
-<p>Data:</p>
-<p>ㅤㅤㅤㅤㅤlid = int</p>
 
 Пример ответа:
 ```
@@ -173,9 +167,6 @@ def get_camera(lid: int) -> dict:
 URL - `https://api.cyxym.net/bigbrother/v1?cams.timelapse`
 Метод - `POST`
 
-Data:
-    channel = str
-
 Пример ответа:
 ```
 {
@@ -207,10 +198,6 @@ def get_timelapse(channel: str) -> dict:
 ## Получение информации о канале (камеры)
 URL - `https://api.cyxym.net/bigbrother/v1?cams.stream`
 Метод - `POST`
-
-Data:
-    channel = str,
-    ip = str
 
 Пример ответа:
 ```
@@ -337,10 +324,6 @@ def get_stream_info(channel: str, ip: str) -> dict:
 URL - `https://api.cyxym.net/pay/v1?init`
 Метод - `POST`
 
-Data:
-    id = int,
-    amount = float
-
 Пример ответа:
 ```
 {
@@ -400,10 +383,6 @@ def create_invoice(id: int, amount: float) -> dict:
 URL - `https://api.cyxym.net/app/v1?auth`
 Метод - `POST`
 
-Data:
-    id = int,
-    password = str
-
 Пример ответа:
 ```
 {
@@ -441,10 +420,6 @@ def auth_by_password(id: int, password: str) -> dict:
 URL - `https://api.cyxym.net/app/v1?pay.temp`
 Метод - `POST`
 
-Data:
-    id = int,
-    token = str
-
 Пример ответа:
 ```
 {
@@ -481,10 +456,6 @@ def create_invoice(id: int, token: str) -> dict:
 ## Получение информации о типе подключения и статуса устройства
 URL - `https://api.cyxym.net/app/v1?account.link`
 Метод - `POST`
-
-Data:
-    id = int,
-    token = str
 
 Пример ответа:
 ```
@@ -533,10 +504,6 @@ def get_connect_info(id: int, token: str) -> dict:
 ## Получение информации о профиле
 URL - `https://api.cyxym.net/app/v1?account`
 Метод - `POST`
-
-Data:
-    id = int,
-    token = str
 
 Пример ответа:
 ```
@@ -592,10 +559,6 @@ def get_profile_user(id: int, token: str) -> dict:
 URL - `https://api.cyxym.net/app/v1?auth.byPhone`
 Метод - `POST`
 
-Data:
-    phone = int,
-    id = int
-
 Пример ответа:
 ```
 {
@@ -632,15 +595,6 @@ def auth_by_phone(id: int, token: str) -> dict:
 ## Получения списка платежей 
 URL - `https://api.cyxym.net/app/v1?pay.list`
 Метод - `POST`
-
-Data:
-    id = int
-    token = str
-    from = str
-    to = str
-    payment = int
-    writeoff = int
-    overdraft = int
 
 Пример ответа:
 ```
@@ -736,10 +690,6 @@ def get_pay_list(id: int, token: str, from_: str, to: str, payment: int, writeof
 ## Отправка кода (смс) для сброса пароля
 URL - `https://api.cyxym.net/app/v1?account.sendSMS`
 Метод - `POST`
-
-Data:
-    phone = int,
-    id = int
 
 Пример ответа:
 ```
