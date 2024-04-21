@@ -6,8 +6,7 @@
 https://api.cyxym.net/app/v1?chat
 
 ## Получение всех локаций
-URL - `https://api.cyxym.net/bigbrother/v1?locations.get`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/bigbrother/v1?locations.get`
 
 Пример ответа:
 ```
@@ -73,8 +72,7 @@ def get_locations() -> dict:
 ```
 
 ## Получение камер по локации
-URL - `https://api.cyxym.net/bigbrother/v2?cams.get`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/bigbrother/v2?cams.get`
 
 Пример ответа:
 ```
@@ -164,8 +162,7 @@ def get_camera(lid: int) -> dict:
 ```
 
 ## Получение TimeLapse
-URL - `https://api.cyxym.net/bigbrother/v1?cams.timelapse`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/bigbrother/v1?cams.timelapse`
 
 Пример ответа:
 ```
@@ -196,8 +193,7 @@ def get_timelapse(channel: str) -> dict:
 ```
 
 ## Получение информации о канале (камеры)
-URL - `https://api.cyxym.net/bigbrother/v1?cams.stream`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/bigbrother/v1?cams.stream`
 
 Пример ответа:
 ```
@@ -321,8 +317,7 @@ def get_stream_info(channel: str, ip: str) -> dict:
 ```
 
 ## Создание счёта на оплату
-URL - `https://api.cyxym.net/pay/v1?init`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/pay/v1?init`
 
 Пример ответа:
 ```
@@ -380,8 +375,7 @@ def create_invoice(id: int, amount: float) -> dict:
 ```
 
 ## Вход в личный кабинет
-URL - `https://api.cyxym.net/app/v1?auth`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/app/v1?auth`
 
 Пример ответа:
 ```
@@ -417,8 +411,7 @@ def auth_by_password(id: int, password: str) -> dict:
 ```
 
 ## Активировать обещанный платёж
-URL - `https://api.cyxym.net/app/v1?pay.temp`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/app/v1?pay.temp`
 
 Пример ответа:
 ```
@@ -454,8 +447,7 @@ def create_invoice(id: int, token: str) -> dict:
 ```
 
 ## Получение информации о типе подключения и статуса устройства
-URL - `https://api.cyxym.net/app/v1?account.link`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/app/v1?account.link`
 
 Пример ответа:
 ```
@@ -502,8 +494,7 @@ def get_connect_info(id: int, token: str) -> dict:
 ```
 
 ## Получение информации о профиле
-URL - `https://api.cyxym.net/app/v1?account`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/app/v1?account`
 
 Пример ответа:
 ```
@@ -556,8 +547,7 @@ def get_profile_user(id: int, token: str) -> dict:
 ```
 
 ## Вход в личный кабинет по номеру телефона и id
-URL - `https://api.cyxym.net/app/v1?auth.byPhone`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/app/v1?auth.byPhone`
 
 Пример ответа:
 ```
@@ -593,8 +583,7 @@ def auth_by_phone(id: int, token: str) -> dict:
 ```
 
 ## Получения списка платежей 
-URL - `https://api.cyxym.net/app/v1?pay.list`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/app/v1?pay.list`
 
 Пример ответа:
 ```
@@ -688,8 +677,7 @@ def get_pay_list(id: int, token: str, from_: str, to: str, payment: int, writeof
 ```
 
 ## Отправка кода (смс) для сброса пароля
-URL - `https://api.cyxym.net/app/v1?account.sendSMS`
-Метод - `POST`
+`POST` - `https://api.cyxym.net/app/v1?account.sendSMS`
 
 Пример ответа:
 ```
