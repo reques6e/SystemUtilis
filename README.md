@@ -418,9 +418,9 @@ Data:
 
 Пример кода:
 ```python
-def create_invoice(id: int, password: str) -> dict:
+def auth_by_password(id: int, password: str) -> dict:
     """
-    Создание счёта на оплату
+    Вход в личный кабинет
 
     Param:
         id: int - Лицевой счёт (ID)
@@ -462,58 +462,6 @@ Data:
 def create_invoice(id: int, token: str) -> dict:
     """
     Создание счёта на оплату
-
-    Param:
-        id: int - Лицевой счёт (ID)
-        token: str - Токен
-    """
-    response = requests.post(
-        'https://api.cyxym.net/app/v1?pay.temp',
-        data = {
-            'id': id,
-            'token': token
-        }
-    )
-
-    return response.json()
-```
-
-## Получение информации о типе подключения и статуса устройства
-URL - `https://api.cyxym.net/app/v1?account.link`
-Метод - `POST`
-
-Data:
-    id = int,
-    token = str
-
-Пример ответа:
-```
-{
-    "response": {
-        "status": true,
-        "data": {
-            "ont_rx_power": "-26.02",
-            "olt_rx_power": "-27.22",
-            "ont_last_seen": {
-                "last_uptime": "2024-04-20 06:59:19",
-                "last_downtime": "2024-04-20 04:59:16",
-                "last_dying_gasp_time": "2024-04-20 04:59:16"
-            },
-            "ont_status": "online",
-            "ont_state": "13",
-            "uptime": "1 день, 8 часов, 26 минут, 19 секунд",
-            "ont_model": "Huawei HG8310M (однопортовая bridge)",
-            "type": "gpon"
-        }
-    }
-}
-```
-
-Пример кода:
-```python
-def get_connect_info(id: int, token: str) -> dict:
-    """
-    Получение информации о типе подключения и статуса устройства
 
     Param:
         id: int - Лицевой счёт (ID)
@@ -662,7 +610,7 @@ Data:
 
 Пример кода:
 ```python
-def get_profile_user(id: int, token: str) -> dict:
+def auth_by_phone(id: int, token: str) -> dict:
     """
     Вход в личный кабинет по номеру телефона и id
 
@@ -756,7 +704,7 @@ Data:
 
 Пример кода:
 ```python
-def get_profile_user(id: int, token: str, from_: str, to: str, payment: int, writeoff: int, overdraft: int) -> dict:
+def get_pay_list(id: int, token: str, from_: str, to: str, payment: int, writeoff: int, overdraft: int) -> dict:
     """
     Получения списка платежей 
 
@@ -805,7 +753,7 @@ Data:
 
 Пример кода:
 ```python
-def get_profile_user(id: int, token: str) -> dict:
+def send_sms(id: int, token: str) -> dict:
     """
     Отправка кода (смс) для сброса пароля
 
