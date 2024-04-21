@@ -9,8 +9,8 @@ https://api.cyxym.net/app/v1?chat
 URL - `https://api.cyxym.net/bigbrother/v1?locations.get`
 Метод - `POST`
 
-Data:\n
-ㅤㅤㅤNone
+<p>Data:</p>
+<p>ㅤㅤㅤNone</p>
 
 Пример ответа:
 ```
@@ -79,8 +79,8 @@ def get_locations() -> dict:
 URL - `https://api.cyxym.net/bigbrother/v2?cams.get`
 Метод - `POST`
 
-Data:
-    lid = int
+<p>Data:</p>
+<p>ㅤㅤㅤㅤㅤlid = int</p>
 
 Пример ответа:
 ```
