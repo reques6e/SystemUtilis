@@ -418,9 +418,12 @@ def auth_by_password(id: int, password: str) -> dict:
 {
     "response": {
         "status": true,
-        "auth": true,
-        "token": ".....",
-        "password_changed": true
+        "data": {
+            "response": {
+                "result": "0",
+                "message": "Обещанный платеж успешно активирован"
+            }
+        }
     }
 }
 ```
