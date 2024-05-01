@@ -664,7 +664,7 @@ def get_pay_list(id: int, token: str, from_: str, to: str, payment: int, writeof
         overdraft: int - Кредитный лимит
     """
     response = requests.post(
-        'https://api.cyxym.net/app/v1?pay.list,
+        'https://api.cyxym.net/app/v1?pay.list',
         data = {
             'id': id,
             'token': token,
