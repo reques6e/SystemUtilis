@@ -566,7 +566,7 @@ def get_profile_user(id: int, token: str) -> dict:
 
 Пример кода:
 ```python
-def auth_by_phone(id: int, token: str) -> dict:
+def auth_by_phone(id: int, phone: str) -> dict:
     """
     Вход в личный кабинет по номеру телефона и id
 
@@ -577,8 +577,8 @@ def auth_by_phone(id: int, token: str) -> dict:
     response = requests.post(
         'https://api.cyxym.net/app/v1?auth.byPhone',
         data = {
-            'id': id,
-            'token': token
+            'phone': phone,
+            'id': id
         }
     )
 
