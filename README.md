@@ -2,8 +2,9 @@
 Утилиты
 
 # API Docs
-
+Не включено в док:
 https://api.cyxym.net/app/v1?chat
+https://api.cyxym.net/app/v1?account.sendSMS
 
 ## Получение всех локаций
 `POST` - `https://api.cyxym.net/bigbrother/v1?locations.get`
