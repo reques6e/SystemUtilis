@@ -431,9 +431,9 @@ def auth_by_password(id: int, password: str) -> dict:
 
 Пример кода:
 ```python
-def create_invoice(id: int, token: str) -> dict:
+def promised_payment(id: int, token: str) -> dict:
     """
-    Создание счёта на оплату
+    Активировать обещанный платёж
 
     Param:
         id: int - Лицевой счёт (ID)
