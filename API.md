@@ -583,7 +583,7 @@ def auth_by_phone(id: int, phone: str) -> dict:
     return response.json()
 ```
 
-## Получения списка платежей 
+## Получение списка платежей 
 `POST` - `https://api.cyxym.net/app/v1?pay.list`
 
 Пример ответа:
@@ -650,7 +650,7 @@ def auth_by_phone(id: int, phone: str) -> dict:
 ```python
 def get_pay_list(id: int, token: str, from_: str, to: str, payment: int, writeoff: int, overdraft: int) -> dict:
     """
-    Получения списка платежей 
+    Получение списка платежей 
 
     Param:
         id: str - Лицевой счёт (ID)
