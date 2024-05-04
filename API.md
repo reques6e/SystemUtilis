@@ -2,6 +2,7 @@
 Не включено в док:
 https://api.cyxym.net/app/v1?chat
 https://api.cyxym.net/app/v1?account.sendSMS
+https://api.cyxym.net/app/v1?account.password
 
 ## Получение всех локаций
 `POST` - `https://api.cyxym.net/bigbrother/v1?locations.get`
