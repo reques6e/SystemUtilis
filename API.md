@@ -1,7 +1,6 @@
 # API Docs
 Не включено в док:
 https://api.cyxym.net/app/v1?chat
-https://api.cyxym.net/app/v1?account.sendSMS
 https://api.cyxym.net/app/v1?account.password
 
 ## Получение всех локаций
@@ -700,6 +699,40 @@ def send_sms(id: int, token: str) -> dict:
     Param:
         phone: int - Номер телефона
         id: str - Лицевой счёт (ID)
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?account.sendSMS',
+        data = {
+            'id': id,
+            'token': token
+        }
+    )
+
+    return response.json()
+```
+
+## Отправка смс кода для смены пароля
+`POST` - `https://api.cyxym.net/app/v1?account.sendSMS`
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "phone": "79*****9472"
+    }
+}
+```
+
+Пример кода:
+```python
+def change_password(id: int, token: str) -> dict:
+    """
+    Отправка смс кода для смены пароля
+
+    Param:
+        id: int - Лицевой счёт (ID)
+        token: str - Токен
     """
     response = requests.post(
         'https://api.cyxym.net/app/v1?account.sendSMS',
