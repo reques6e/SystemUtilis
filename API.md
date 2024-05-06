@@ -770,7 +770,7 @@ def block_lk(id: int, token: str, lock: int) -> dict:
     """
     response = requests.post(
         'https://api.cyxym.net/app/v1?account.lock',
-        json={
+        data = {
             'id': id,
             'token': token,
             'lock': lock
