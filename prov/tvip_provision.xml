@@ -1,0 +1,81 @@
+<!-- Обновление каждые 10 минут  -->
+<provision reload="600">
+    <secure_provision>
+        <public_key>
+-----BEGIN PUBLIC KEY-----
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFA4forejQjqoy6ssCUS7Y4cRF
+xWsCDl68ieSXdIuHx26ZEKWnD4hHNigJqrKtdWmHMyMwkG7MaT5AlhQxhZn7LrT/
+8lBje7OKDXXgRSaFHMptqS3YwT7KyTJ3XZhJ4rcH/YHOaIpM8OMjFIDAQQ4dV36k
+rr4cbV1+llMJ29qXAQIDAQAB
+-----END PUBLIC KEY-----
+</public_key>
+    </secure_provision>
+    <!-- Использовать наш локальный сервер обновлений stbfw.cyxym.net -->
+    <update_server name="stbfw.cyxym.net"/>
+    <provision_server name="stbprov.cyxym.net"/>
+    <!-- Установка логотипа -->
+    <bootlogo url="http://stbprov.cyxym.net/logo/boot_logo_systema.bmp" />
+    <logo url="http://stbprov.cyxym.net/logo/logo_systema.png"/>
+    <!--  Информация об операторе  -->
+    <operator name="ООО СИСТЕМА"/>
+    <!-- Настройка времени и часового пояса -->
+    <time tz="Europe/Moscow" ntp="ntp.cyxym.net"/>
+    <!-- Дополнительные настройки -->
+    <features>
+        <mediaplayer enabled="true"/>
+        <dvr enabled="false"/>
+        <cctv enabled="false"/>
+        <vod enabled="false"/>
+        <navigator enabled="true"/>
+    </features>
+    <!-- Принудительное обновление на релиз  -->
+    <updates>
+        <update_background force="true" value="true"/>
+        <update_force force="true" value="true"/>
+        <update_period value="86400"/>
+    </updates>
+    <!-- Перезагрузка приставки при обновлении провижининга -->
+    <restart value="reboot" />
+    <system_locks>
+        <reset locked="false"/>
+    </system_locks>
+    <!-- Директива указывающая показывать файл в оригинальном разрешении -->
+    <display>
+        <aspect value="" force="true"/>
+        <cec value="false" />
+        <sync_standby value="true" />
+    </display>
+    <tv_protocols default="jsonapi" force="jsonapi">
+        <protocol type="jsonapi" server="http://tms.cyxym.net"/>
+    </tv_protocols>
+    <tv_stream type="multicast" tsbuffer="5000" tsboost="true"/>
+    <!-- Отключение/включение ручной настройки Сети, настроек мультикаста, UDP-прокси. Запрет изменения Middleware. -->
+    <preferences>
+        <pref_network visible="true"/>
+        <pref_tv>
+            <pref_tv_streamtype visible="true"/>
+            <pref_tv_udpxyaddress visible="true"/>
+            <pref_tv_middleware disabled="true"/>
+        </pref_tv>
+    </preferences>
+    <!-- ОБРАТИТЬ ВНИМАНИЕ, СДЕЛАНО В ГЕРМАНИИ ТЕСТЫ НА СТАТИСТИКУ ПРИСТАВКИ!!!!-->
+    <statistics url="https://api.cyxym.net/kino/v1?connection.update" accum_period="901">
+        <media />
+        <network period="900" />
+    </statistics>
+    <webapps>
+        <app name="kino" title="Кино" uiwidth="1920" uiheight="1080" url="http://stb-kino.cyxym.net/app" bgr="http://stbprov.cyxym.net/logo/systema_kino.png" api="tvip"/>
+        <app name="youtube"/>
+        <app name="youtube_kids"/>
+        <app name="tvzavr" hidden="true"/>
+        <app name="ivi"/>
+        <app name="okko" hidden="true"/>
+        <app name="kinopoisk" hidden="true"/>
+        <app name="startapp" hidden="true"/>
+        <app name="rutube" hidden="true"/>
+        <app name="tvigle" hidden="true"/>
+        <app name="plex" hidden="true"/>
+        <app name="megogo" hidden="true"/>
+    </webapps>
+</provision>
+<!--SIGNATURE: kmH9UKufOStA4tBtKzyOoAEZQnHEsy9edS4SqvsCphoBzW6W76AHCRrA+Pt/3ckmPZNga362HaRd38LmzA4r6dbQjJeZpNH5sYhy7pX1P2cvXn/3xO7XvoWGisbtchP4foWX4nN6gBvtPvOz+xbP/B9/XPEgV1sG1zWmjKRVgzI=-->
