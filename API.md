@@ -744,3 +744,38 @@ def change_password(id: int, token: str) -> dict:
 
     return response.json()
 ```
+
+## Временная блокировка лк
+`POST` - `https://api.cyxym.net/app/v1?account.lock`
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true
+    }
+}
+```
+
+Пример кода:
+```python
+def block_lk(id: int, token: str, lock: int) -> dict:
+    """
+    Блокировка личного кабинета
+
+    Param:
+        id: int - Лицевой счёт (ID)
+        token: str - Токен
+        lock: int - Статус блокировки (0 - разблокировать, 1 - заблокировать)
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?account.lock',
+        json={
+            'id': id,
+            'token': token,
+            'lock': lock
+        }
+    )
+
+    return response.json()
+```
