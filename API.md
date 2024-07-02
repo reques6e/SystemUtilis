@@ -1,7 +1,6 @@
 # API Docs
 Не включено в док:
 https://api.cyxym.net/app/v1?chat
-https://api.cyxym.net/app/v1?account.password
 
 ## Получение всех локаций
 `POST` - `https://api.cyxym.net/bigbrother/v1?locations.get`
@@ -774,6 +773,44 @@ def block_lk(id: int, token: str, lock: int) -> dict:
             'id': id,
             'token': token,
             'lock': lock
+        }
+    )
+
+    return response.json()
+```
+
+## Подтверждение изменения пароля
+`POST` - `https://api.cyxym.net/app/v1?account.password`
+
+Пример ответа:
+```
+{
+    "response": {
+        "status": true,
+        "phone": "79*****9472"
+    }
+}
+```
+
+Пример кода:
+```python
+def change_password_confim(id: int, password: str, token: str, code: int) -> dict:
+    """
+    Блокировка личного кабинета
+
+    Param:
+        id: int - Лицевой счёт (ID)
+        password: str - Пароль от счёта
+        token: str - Токен
+        code: int - Разовый код
+    """
+    response = requests.post(
+        'https://api.cyxym.net/app/v1?account.password',
+        data = {
+            'id': id,
+            'password': password,
+            'token': token,
+            'code': code
         }
     )
 
